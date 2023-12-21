@@ -2,23 +2,52 @@
 <html lang="en">
 <head> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-    
-    <link rel="stylesheet" href="mystyle.css">
 <style>
+<!-- level one display setting -->
 div.mycontainer{width:50%; display: flex;  margin: auto;}
 
+<!-- buttom -->
 input[type=button], input[type=submit], input[type=reset] {background-color: #04AA6D;border: none;color: white;
 padding: 16px 32px;text-decoration: none;margin: 4px 2px;cursor: pointer;
 
+<!-- slide -->
+* {box-sizing: border-box;}
+.mySlides {display: none;} 
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {max-width: 1000px; position: relative;  margin: auto;}
+
+/* Caption text */
+.text {color: #f2f2f2; font-size: 15px;padding: 8px 12px;position: absolute;bottom: 8px;width: 100%;text-align: center;}
+
+/* Number text (1/3 etc) */
+.numbertext {color: #f2f2f2;font-size: 12px;padding: 8px 12px;position: absolute;top: 0;}
+
+/* The dots/bullets/indicators */
+.dot {height: 15px;width: 15px;margin: 0 2px;background-color: #bbb;border-radius: 50%;display: inline-block;transition: background-color 0.6s ease;}
+
+.active {background-color: #717171;}
+
+/* Fading animation */
+.fade {animation-name: fade;animation-duration: 1.5s;}
+
+@keyframes fade {from {opacity: .4} to {opacity: 1}}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {.text {font-size: 11px}}
+
+
+
+
+    
 div.gallery {margin: 5px; border: 1px solid #ccc; float: left; width: 25%;}
 div.gallery:hover {border: 1px solid #777;}
 div.gallery img {width: 100%;height: auto;}
 div.desc {padding: 15px;text-align: center;}
+
     
-.mySlides {display:none;}
-    
-body {background-color:#708654;font-family: Georgia; font-size: 100%;
+body {background-color: white ;font-family: Georgia; font-size: 100%;
 </style>
     <meta charset="utf-8"/>
     <title>Elena Montalvo Project website main page</title>
@@ -34,31 +63,61 @@ body {background-color:#708654;font-family: Georgia; font-size: 100%;
           <input type="button" value="Contact Me!">
     </div>
 
-    <div>
-   <div class="w3-content w3-section" style="max-width:500px">
-    <img class="mySlides" src="img_la.jpg" style="width:100%">
-  <img class="mySlides" src="img_ny.jpg" style="width:100%">
-  <img class="mySlides" src="img_chicago.jpg" style="width:100%">
-</div>
-        <script>
-        var myIndex = 0;
-        carousel();
+    <div class="slideshow-container">
+    
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="creativity.png" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
         
-        function carousel() {
-          var i;
-          var x = document.getElementsByClassName("mySlides");
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-          }
-          myIndex++;
-          if (myIndex > x.length) {myIndex = 1}    
-          x[myIndex-1].style.display = "block";  
-          setTimeout(carousel, 2000); // Change image every 2 seconds
-        }
-        </script>
-
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="creativity.png" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="adventure.png" style="width:100%">
+          <div class="text">Caption Three</div>
     </div>
+
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+    
+    <script>
+    let slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+    </script>
+        
 </div>
+
+    <br>
+
+
     <div class="gallery">
   <a target="_blank" href="img_5terre.jpg">
     <img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
